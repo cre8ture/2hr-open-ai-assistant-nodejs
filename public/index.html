@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OpenAI Assistant</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <h1>OpenAI Assistant</h1>
+    <div class="grid-container">
+
+        <div class="first">
+            <label for="user">User:</label>
+            <br />
+            <input type="text" id="user" value="cre8ture" />
+
+            <br />
+        </div>
+        <div class="second">
+            <br />
+            <label for="message">message for math assistant:</label>
+            <br />
+            <textarea id="message"></textarea>
+            <button id="send">Send</button>
+        </div>
+
+        <div class="third">
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <script>
+        const socket = io();
+
+
+        document.getElementById('send').addEventListener('click', () => {
+            const message = document.getElementById('message').value;
+            const user = document.getElementById('user').value;
+            socket.emit('message', { content: message, user: user });
+        });
+
+        socket.on('response', (response) => {
+            document.getElementById('output').textContent = JSON.stringify(response, null, 2);
+        });
+    </script>
+</body>
+
+</html>

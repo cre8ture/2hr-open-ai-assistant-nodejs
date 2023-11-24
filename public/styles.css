@@ -1,0 +1,24 @@
+body{
+    background-color: aliceblue ;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+}
+.first{
+    grid-row: 1;
+    background-color: #FF9AA2; /* Soft red */
+}
+
+.second{
+    grid-row: 2;
+    background-color: #FFB7B2; /* Soft coral */
+}
+
+.third{
+    grid-row: 3;
+    background-color: #FFDAC1; /* Soft peach */
+}
